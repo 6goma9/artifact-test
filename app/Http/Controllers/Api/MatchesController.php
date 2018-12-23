@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\ApiBaseController;
 
-class TestController extends Controller
+class MatchesController extends ApiBaseController
 {
     /**
      * Display a listing of the resource.
@@ -13,15 +14,7 @@ class TestController extends Controller
      */
     public function index()
     {
-        //test
-        $ch = curl_init('https://api.opendota.com/api/metadata');
-        $options = [
-            CURLOPT_RETURNTRANSFER => true,
-        ];
-        curl_setopt_array($ch, $options);
-        $res = curl_exec($ch);
-        curl_close($ch);
-        return \Response::json($res);
+        //
     }
 
     /**
@@ -54,6 +47,8 @@ class TestController extends Controller
     public function show($id)
     {
         //
+        $url = $this->baseUrl . "/matches/{$id}";
+        return $this->curl($url);
     }
 
     /**

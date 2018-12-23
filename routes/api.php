@@ -17,4 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('test', 'TestController');
+Route::resource('test', 'Api\TestController');
+Route::resource('matches', 'Api\MatchesController');
+Route::resource('heroes', 'Api\HeroesController');
