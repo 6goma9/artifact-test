@@ -8,9 +8,10 @@
         <title>Test App</title>
     </head>
     <body>
-        <div id="app">
-            <!-- example-component はLaravelに入っているサンプルのコンポーネント -->
-            <example-component></example-component>
+        <div class="container-fluid" id="app">
+            <header-component></header-component>
+            <home-component></home-component>
+            <footer-component></footer-component>
         </div>
         <script src=" {{ mix('js/app.js') }} "></script>
     </body>
