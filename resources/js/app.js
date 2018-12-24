@@ -7,6 +7,8 @@
 require("./bootstrap");
 
 window.Vue = require("vue");
+window.VueRouter = require("vue-router").default;
+Vue.use(VueRouter);
 
 /**
  * The following block of code may be used to automatically register your
@@ -16,9 +18,14 @@ window.Vue = require("vue");
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component("header-component", require("./components/HeaderComponent.vue"));
-Vue.component("home-component", require("./components/HomeComponent.vue"));
-Vue.component("footer-component", require("./components/FooterComponent.vue"));
+Vue.component(
+    "header-component",
+    require("./components/HeaderComponent.vue").default
+);
+Vue.component(
+    "footer-component",
+    require("./components/FooterComponent.vue").default
+);
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -32,6 +39,22 @@ Vue.component("footer-component", require("./components/FooterComponent.vue"));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const router = new VueRouter({
+    mode: "history",
+    routes: [
+        {
+            path: "/",
+            component: require("./components/HomeComponent.vue").default
+        },
+        {
+            path: "/distributions",
+            component: require("./components/DistributionsComponent.vue")
+                .default
+        }
+    ]
+});
+
 const app = new Vue({
+    router,
     el: "#app"
 });
