@@ -8,7 +8,7 @@
         <title>Test App</title>
     </head>
     <body>
-        <div class="container" id="app">
+        <div id="app">
             <header-component></header-component>
             <router-view></router-view>
             <footer-component></footer-component>

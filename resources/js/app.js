@@ -48,8 +48,12 @@ const router = new VueRouter({
         },
         {
             path: "/distributions",
-            component: require("./components/DistributionsComponent.vue")
+            component: require("./components/dota2/DistributionsComponent.vue")
                 .default
+        },
+        {
+            path: "/blog",
+            component: require("./components/blog/HomeComponent.vue").default
         }
     ]
 });
