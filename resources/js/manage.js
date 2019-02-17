@@ -20,11 +20,7 @@ Vue.use(VueRouter);
 
 Vue.component(
     "header-component",
-    require("./components/HeaderComponent.vue").default
-);
-Vue.component(
-    "footer-component",
-    require("./components/FooterComponent.vue").default
+    require("./components/ManageHeaderComponent.vue").default
 );
 
 // const files = require.context('./', true, /\.vue$/i)
@@ -43,26 +39,13 @@ const router = new VueRouter({
     mode: "history",
     routes: [
         {
-            path: "/",
-            component: require("./components/HomeComponent.vue").default
-        },
-        {
-            path: "/distributions",
-            component: require("./components/dota2/DistributionsComponent.vue")
-                .default
-        },
-        {
-            path: "/blog",
-            component: require("./components/blog/HomeComponent.vue").default
-        },
-        {
-            path: "/blog/:id",
-            component: require("./components/blog/ArticleComponent.vue").default
+            path: "/manage/",
+            component: require("./components/blog/CreateComponent.vue").default
         }
     ]
 });
 
 const app = new Vue({
     router,
-    el: "#app"
+    el: "#manage"
 });

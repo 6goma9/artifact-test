@@ -19,7 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 
-Route::resource('matches', 'Api\MatchesController');
-Route::resource('heroes', 'Api\HeroesController');
-Route::resource('schema', 'Api\SchemaController');
-Route::resource('distributions', 'Api\DistributionsController');
+Route::resource('matches', 'Api\MatchesController', ['except' => ['create', 'edit']]);
+Route::resource('heroes', 'Api\HeroesController', ['except' => ['create', 'edit']]);
+Route::resource('schema', 'Api\SchemaController', ['except' => ['create', 'edit']]);
+Route::resource('distributions', 'Api\DistributionsController', ['except' => ['create', 'edit']]);
+Route::resource('article', 'Api\ArticleController', ['except' => ['create', 'edit']]);

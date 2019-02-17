@@ -18,4 +18,9 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
+    public function api($requst, Closure $next)
+    {
+        Log::error('aaaaaaaaaaaaaaaaaaaaa');
+        return $next($request);
+    }
 }

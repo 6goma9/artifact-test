@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 */
 
+Route::get('/manage', function () {
+    return view('manage');
+})->where('any', '.*');
+
 Route::get('/{any}', function () {
     return view('home');
 })->where('any', '.*');
