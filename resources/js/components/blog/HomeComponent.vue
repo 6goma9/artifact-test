@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div v-if="articles.length" class="row">
       <div class="col-md-8">
         <h1 class="my-4">記事一覧</h1>
         <div v-for="article in articles" v-bind:key="article.id" class="card">
@@ -11,6 +11,9 @@
         </div>
       </div>
       <div class="col-md-4"></div>
+    </div>
+    <div v-else class="col-md-12">
+      <h2 class="my-3">記事がありません</h2>
     </div>
   </div>
 </template>
