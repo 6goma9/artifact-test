@@ -38,7 +38,8 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->ip() !== env('MANAGE_IP')) return \response()->json(['status' => 401, 'message' => '認証されていません']);
+
+        if ($request->isAuthenticated === null) return \response()->json(['status' => 401, 'message' => '認証されていません']);
         $article = new Article();
         $article->title = $request->title;
         $article->contents = $request->contents;

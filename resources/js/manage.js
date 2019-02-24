@@ -6,9 +6,10 @@
 
 require("./bootstrap");
 
-window.Vue = require("vue");
-window.VueRouter = require("vue-router").default;
-Vue.use(VueRouter);
+import Vue from "vue";
+
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies);
 
 /**
  * The following block of code may be used to automatically register your
@@ -34,6 +35,8 @@ Vue.component(
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import VueRouter from "vue-router";
+Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: "history",
@@ -45,7 +48,19 @@ const router = new VueRouter({
     ]
 });
 
+import Vuex from "vuex";
+Vue.use(Vuex);
+
+import managerAuth from "./store/managerAuth";
+
+const store = new Vuex.Store({
+    modules: {
+        managerAuth
+    }
+});
+
 const app = new Vue({
     router,
+    store,
     el: "#manage"
 });

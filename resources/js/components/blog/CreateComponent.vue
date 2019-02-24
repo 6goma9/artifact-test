@@ -54,13 +54,19 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
+      manager: null,
       title: "",
       contents: "",
       simplemde: null
     };
+  },
+  computed: {
+    ...mapGetters({ getManager: "managerAuth/getManager" })
   },
   mounted() {
     this.simplemde = new SimpleMDE({
@@ -86,22 +92,19 @@ export default {
     $(".toast").toast({ animation: true, autohide: true, delay: 1000 });
   },
   methods: {
-    submit() {
-      axios
-        .post("/api/article", {
-          contents: document.getElementById("editor").value,
-          title: this.title
-        })
-        .then(res => {
-          console.log(res);
-          $("#completed").toast("show");
-          this.title = "";
-          this.simplemde.value("");
-        })
-        .catch(err => {
-          console.log(err);
-          $("#failed").toast("show");
-        });
+    async submit() {
+      const res = await axios.post("/api/article", {
+        contents: document.getElementById("editor").value,
+        title: this.title,
+        isAuthenticated: this.getManager
+      });
+      if (res.status === 201) {
+        $("#completed").toast("show");
+        this.title = "";
+        this.simplemde.value("");
+      } else {
+        $("#failed").toast("show");
+      }
     }
   }
 };

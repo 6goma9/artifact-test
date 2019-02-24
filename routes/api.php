@@ -24,3 +24,5 @@ Route::resource('heroes', 'Api\HeroesController', ['except' => ['create', 'edit'
 Route::resource('schema', 'Api\SchemaController', ['except' => ['create', 'edit']]);
 Route::resource('distributions', 'Api\DistributionsController', ['except' => ['create', 'edit']]);
 Route::resource('article', 'Api\ArticleController', ['except' => ['create', 'edit']]);
+Route::post('login', 'Api\ManagerLoginController@login');
+Route::post('logout', 'Api\ManagerLoginController@logout');
